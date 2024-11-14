@@ -5,8 +5,10 @@
 
   <div class="col">
     <!-- SearchBox -->
+    <!-- (onValue)="searchByCapital($event)" -->
     <shared-search-box
-      (onValue)="searchByCapital($event)"
+      (onDebounce)="searchByCapital($event)"
+      [initialValue]="initialValue"
       placeholder="Buscar por capital"
     ></shared-search-box>
   </div>
@@ -17,6 +19,7 @@
   <div class="col">
     <!-- tabla de resultados -->
      <hr>
+     <shared-loadin-spinner *ngIf="isLoading"></shared-loadin-spinner>
      <ul>
       <countries-table [countries]="countries" ></countries-table>
      </ul>
